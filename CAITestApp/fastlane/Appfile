@@ -1,0 +1,8 @@
+app_identifier("us.eidinger.btp.cai.sdk.ios.CAITestApp") # The bundle identifier of your app
+apple_id("eidingermarco@gmail.com") # Your Apple email address
+
+itc_team_id("2085979") # App Store Connect Team ID
+team_id("6V66CC3AN6") # Developer Portal Team ID
+
+# For more information about the Appfile, see:
+#     https://docs.fastlane.tools/advanced/#appfile
