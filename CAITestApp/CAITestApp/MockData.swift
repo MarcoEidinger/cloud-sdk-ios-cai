@@ -144,23 +144,23 @@ struct MockData {
             UIModelDataAction("Submit review", "Submit review", .text)
         ]
         var c1 = CAIResponseMessageData("Mustang", "Car on race track", "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/2019-mustang-shelby-gt350-101-1528733363.jpg?crop=0.817xw:1.00xh;0.149xw,0&resize=640:*", nil, iButtons, nil, nil, nil, nil, true)
-            
+
         carouselArr.append(c1)
         iButtons = [
             UIModelDataAction("See more", "See more", .text)
         ]
         var c2 = CAIResponseMessageData("Dog", "Without the cutiest animal on the planet, am I right?", "https://thelabradorclub.com/wp-content/uploads/2016/09/purpose-bg.jpg", nil, iButtons, nil, nil, nil, nil, true)
-        
+
         carouselArr.append(c2)
-        
+
         var c3 = CAIResponseMessageData("Card", "Card in Carousel", nil, nil, iButtons, nil, nil, nil, nil, true)
-        
+
         carouselArr.append(c3)
-        
+
         var c4 = CAIResponseMessageData("Different Card", "Another Card in Carousel", nil, nil, iButtons, nil, nil, nil, nil, true)
-        
+
         carouselArr.append(c4)
-        
+
         arr.append(CAIResponseMessageData(carouselArr.map { $0.attachment.content! }, true))
 
         // text message (user)
@@ -225,6 +225,12 @@ struct MockData {
                                          nil,
                                          "Available")
         arr.append(hp4)
+
+        // text message (user)
+        arr.append(CAIResponseMessageData(text: "Show me a funny GIF", false))
+
+        // image (bot)
+        arr.append(CAIResponseMessageData(imageName: "https://media.wired.com/photos/59326d5344db296121d6aee9/master/w_2240,c_limit/8552.gif"))
 
         // KEEP THIS ONE LAST
         

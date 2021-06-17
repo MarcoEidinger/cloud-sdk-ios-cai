@@ -1,5 +1,5 @@
+import SDWebImageSwiftUI
 import SwiftUI
-import URLImage
 
 /// Renders an image from a MediaItem data model
 ///
@@ -13,6 +13,8 @@ struct ImageUIView: View {
     private let geometry: GeometryProxy
     
     private let media: MediaItem?
+
+    @ObservedObject private var imageManager: ImageManager
     
     @Environment(\.horizontalSizeClass) private var hSizeClass
 
@@ -32,34 +34,35 @@ struct ImageUIView: View {
         self.media = media
         self.geometry = geometry
         self.fallback = fallback
+
+        self.imageManager = ImageManager(url: media?.sourceUrl)
+        self.imageManager.load()
     }
     
     // :nodoc:
     var body: some View {
         Group {
             if let sourceUrl = media?.sourceUrl {
-                URLImage(url: sourceUrl) { image, info in
-                    SizeConverter(
-                        CGSize(width: CGFloat(info.cgImage.width), height: CGFloat(info.cgImage.height)),
-                        BoundingBox(minWidth: 44,
-                                    minHeight: 44,
-                                    maxWidth: self.hSizeClass == .regular ? 480 : self.geometry.size.width * 0.75,
-                                    maxHeight: self.vSizeClass == .regular ? 400 : 240),
-                        content: { targetSize in
-                            image
-                                .resizable()
-                                .aspectRatio(contentMode: .fill)
-                                .frame(width: targetSize.width, height: targetSize.height)
-                        }
-                    )
-                    .preference(key: ImageSizeInfoPrefKey.self,
-                                value: CGSize(width: info.cgImage.width,
-                                              height: info.cgImage.height))
+                if let image = imageManager.image {
+                    WebImage(url: sourceUrl)
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: targetSize(image).width, height: targetSize(image).height)
+                        .preference(key: ImageSizeInfoPrefKey.self,
+                                    value: CGSize(width: image.cgImage!.width,
+                                                  height: image.cgImage!.height))
+                } else {
+                    WebImage(url: sourceUrl)
                 }
             } else {
                 fallback
             }
         }
+    }
+
+    func targetSize(_ image: UIImage) -> CGSize {
+        SizeConverter<Text>.applySizeConstraints(from: CGSize(width: CGFloat(image.cgImage!.width), height: CGFloat(image.cgImage!.height)),
+                                                 to: BoundingBox(minWidth: 44, minHeight: 44, maxWidth: self.hSizeClass == .regular ? 480 : self.geometry.size.width * 0.75, maxHeight: self.vSizeClass == .regular ? 400 : 240))
     }
 }
 
@@ -67,7 +70,7 @@ struct ImageSizeInfoPrefKey: PreferenceKey {
     typealias Value = CGSize
 
     static var defaultValue: CGSize = .zero
-    
+
     static func reduce(value: inout CGSize, nextValue: () -> CGSize) {
         value = nextValue()
     }

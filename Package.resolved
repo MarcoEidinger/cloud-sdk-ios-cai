@@ -47,21 +47,30 @@
         }
       },
       {
+        "package": "SDWebImage",
+        "repositoryURL": "https://github.com/SDWebImage/SDWebImage.git",
+        "state": {
+          "branch": null,
+          "revision": "76dd4b49110b8624317fc128e7fa0d8a252018bc",
+          "version": "5.11.1"
+        }
+      },
+      {
+        "package": "SDWebImageSwiftUI",
+        "repositoryURL": "https://github.com/SDWebImage/SDWebImageSwiftUI.git",
+        "state": {
+          "branch": null,
+          "revision": "cd8625b7cf11a97698e180d28bb7d5d357196678",
+          "version": "2.0.2"
+        }
+      },
+      {
         "package": "TinyNetworking",
         "repositoryURL": "https://github.com/objcio/tiny-networking",
         "state": {
           "branch": null,
           "revision": "a9af2917018e513c77061139fe3ce4e4d67cf259",
           "version": "0.4.1"
-        }
-      },
-      {
-        "package": "URLImage",
-        "repositoryURL": "https://github.com/dmytro-anokhin/url-image",
-        "state": {
-          "branch": null,
-          "revision": "ccab89ad1cedb04f25dd4df1776dd8c8583b914a",
-          "version": "2.2.5"
         }
       },
       {
