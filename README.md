@@ -1,13 +1,14 @@
+<div>
+  
+  <p align="center">
+    <img width=20% src="https://www.sap.com/content/dam/application/imagelibrary/pictograms/283000/283370-pictogram-purple.svg" alt="Logo" />
+    </br>
+    <span><b>SAP Conversational AI SDK for iOS</b></span>
+  </p>
 
-<p align="center">
-  <img width=20% src="https://www.sap.com/content/dam/application/imagelibrary/pictograms/283000/283370-pictogram-purple.svg" alt="Logo" />
-  </br>
-  <span><b>SAP Conversational AI SDK for iOS</b></span>
-</p>
+  <hr>
 
-***
-
-<div align="center">
+  <div align="center">
     <a href="https://github.com/SAP/cloud-sdk-ios-cai#installation">Installation
     </a>
     |
@@ -19,11 +20,11 @@
     |
     <a href="https://github.com/SAP/cloud-sdk-ios-cai/blob/main/CHANGELOG.md"> Changelog
     </a>
-</div>
+  </div>
 
-***
+  <hr>
 
-<div align="center">
+  <div align="center">
     <a href="https://github.com/SAP/cloud-sdk-ios-cai/actions?query=workflow%3A%22CI%22">
         <img src="https://github.com/SAP/cloud-sdk-ios-cai/workflows/CI/badge.svg"
              alt="Build Status">
@@ -40,9 +41,10 @@
         <img src="https://api.reuse.software/badge/github.com/SAP/cloud-sdk-ios-cai"
              alt="REUSE status">
     </a>
+    
+  <hr>
+  </div>
 </div>
-
-***
 
 The `SAPCAI` Swift Package is a module to connect to a bot on the end-to-end chatbot platform [SAP Conversational AI](https://www.sap.com/products/conversational-ai.html) (CAI). It provides a pluggable SwiftUI `AssistantView` to initiate a conversation and render the various [message types](https://help.sap.com/viewer/a4522a393d2b4643812b7caadfe90c18/latest/en-US/ad3681adae824f8a96cbcf8b889a4ffc.html) of a bot.
 
